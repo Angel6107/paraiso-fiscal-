@@ -1,6 +1,7 @@
+<!DOCTYPE html>
 <html>
 <head>
-    <title> ola esta es mi primer pagina web <button>Like</button> dale like panas les presento mi pagina de apuestad: juego de dados</title>
+    <title>ola esta es mi primer pagina web <button>Like</button> dale like panas les presento mi pagina de apuestas: juego de dados</title>
     <style>
         body {
             font-family: monospace;
@@ -26,7 +27,7 @@
     </style>
 </head>
 <body>
-    <h1>Juego de Dados</h1>
+    <h1>ola esta es mi primer pagina web <button>Like</button> dale like panas les presento mi pagina de apuestas: juego de dados</h1>
     <p id="saldo">Saldo: 100</p>
     <div id="dado1" class="div-dado"></div>
     <div id="dado2" class="div-dado"></div>
@@ -54,10 +55,10 @@
             document.getElementById("suma").textContent = "Suma: " + suma;
 
             if (suma === 7 || suma === 11) {
-                document.getElementById("resultado").textContent = "Ganaste!";
+                document.getElementById("resultado").textContent = "ganaste w";
                 saldo += apuesta * 2;
             } else {
-                document.getElementById("resultado").textContent = "Sigue intentando.";
+                document.getElementById("resultado").textContent = "perdiste";
                 saldo -= apuesta;
             }
 
@@ -88,7 +89,7 @@
                     crearPunto(dado, 80, 80);
                     break;
                 case 5:
-                    crearPunto(dado, 20, 20);
+                    crearPuso(dado, 20, 20);
                     crearPunto(dado, 80, 20);
                     crearPunto(dado, 50, 50);
                     crearPunto(dado, 20, 80);
