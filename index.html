@@ -1,13 +1,117 @@
 <html>
-<head> ola esta es mi primer pagina web <button>Like</button> dale like panas
-
-
-<title>
-
+<head>
+    <title> ola esta es mi primer pagina web <button>Like</button> dale like panas les presento mi pagina de apuestad: juego de dados</title>
+    <style>
+        body {
+            font-family: monospace;
+            text-align: center;
+            background-color: lightblue;
+        }
+        .div-dado {
+            display: inline-block;
+            border: 2px solid black;
+            width: 100px;
+            height: 100px;
+            margin: 20px;
+            position: relative;
+            background-color: white;
+        }
+        .punto {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: black;
+            border-radius: 50%;
+        }
+    </style>
 </head>
-
 <body>
+    <h1>Juego de Dados</h1>
+    <p id="saldo">Saldo: 100</p>
+    <div id="dado1" class="div-dado"></div>
+    <div id="dado2" class="div-dado"></div>
+    <button onclick="lanzarDados()">Lanzar Dados</button>
+    <p id="resultado"></p>
+    <p id="suma"></p>
 
+    <script>
+        let saldo = 100;
+        let apuesta = 5;
+
+        function lanzarDados() {
+            if (saldo < apuesta) {
+                alert("Saldo insuficiente.");
+                return;
+            }
+
+            let dado1 = Math.floor(Math.random() * 6) + 1;
+            let dado2 = Math.floor(Math.random() * 6) + 1;
+            let suma = dado1 + dado2;
+
+            mostrarDado("dado1", dado1);
+            mostrarDado("dado2", dado2);
+
+            document.getElementById("suma").textContent = "Suma: " + suma;
+
+            if (suma === 7 || suma === 11) {
+                document.getElementById("resultado").textContent = "Ganaste!";
+                saldo += apuesta * 2;
+            } else {
+                document.getElementById("resultado").textContent = "Sigue intentando.";
+                saldo -= apuesta;
+            }
+
+            document.getElementById("saldo").textContent = "Saldo: " + saldo;
+        }
+
+        function mostrarDado(id, valor) {
+            let dado = document.getElementById(id);
+            dado.innerHTML = ""; // Limpiar el dado
+
+            switch (valor) {
+                case 1:
+                    crearPunto(dado, 50, 50);
+                    break;
+                case 2:
+                    crearPunto(dado, 20, 20);
+                    crearPunto(dado, 80, 80);
+                    break;
+                case 3:
+                    crearPunto(dado, 20, 20);
+                    crearPunto(dado, 50, 50);
+                    crearPunto(dado, 80, 80);
+                    break;
+                case 4:
+                    crearPunto(dado, 20, 20);
+                    crearPunto(dado, 80, 20);
+                    crearPunto(dado, 20, 80);
+                    crearPunto(dado, 80, 80);
+                    break;
+                case 5:
+                    crearPunto(dado, 20, 20);
+                    crearPunto(dado, 80, 20);
+                    crearPunto(dado, 50, 50);
+                    crearPunto(dado, 20, 80);
+                    crearPunto(dado, 80, 80);
+                    break;
+                case 6:
+                    crearPunto(dado, 20, 20);
+                    crearPunto(dado, 80, 20);
+                    crearPunto(dado, 20, 50);
+                    crearPunto(dado, 80, 50);
+                    crearPunto(dado, 20, 80);
+                    crearPunto(dado, 80, 80);
+                    break;
+            }
+        }
+
+        function crearPunto(dado, x, y) {
+            let punto = document.createElement("div");
+            punto.className = "punto";
+            punto.style.left = x + "px";
+            punto.style.top = y + "px";
+            dado.appendChild(punto);
+        }
+    </script>
 </body>
-
 </html>
